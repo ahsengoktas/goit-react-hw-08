@@ -1,10 +1,18 @@
 import { useId } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { register } from '../../redux/auth/operations.js';
 import css from './RegistrationForm.module.css';
 
 const initialValues = { name: '', email: '', password: '' };
+
+const validate = (values) => {
+  const errors = {};
+  if (values.password.length > 0 && values.password.length < 7) {
+    errors.password = 'Şifre 7 haneden küçük olamaz';
+  }
+  return errors;
+};
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -16,7 +24,11 @@ export default function RegistrationForm() {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      validate={validate}
+      onSubmit={handleSubmit}
+    >
       <Form className={css.form} autoComplete="off">
         <label className={css.label} htmlFor={`${id}-name`}>
           Username
@@ -44,6 +56,7 @@ export default function RegistrationForm() {
           name="password"
           required
         />
+        <ErrorMessage className={css.error} name="password" component="span" />
 
         <button className={css.button} type="submit">
           Register
