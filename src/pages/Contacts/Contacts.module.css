@@ -1,0 +1,35 @@
+.section {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    grid-template-columns: 320px 1fr;
+    align-items: start;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-size: 28px;
+}
+
+.content {
+  min-width: 0;
+}
+
+.info {
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.error {
+  margin-bottom: 12px;
+  color: #c0392b;
+}

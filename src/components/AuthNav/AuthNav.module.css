@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.link {
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link:hover {
+  background: #eef2fd;
+}
+
+.active {
+  background: #2f6fed;
+  color: #fff;
+}
+
+.active:hover {
+  background: #1f56c4;
+}
